@@ -2,8 +2,8 @@ eureka:
   instance:
     hostname: localhost
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: false # because this is the registry itself. If this were true, the server would try to register itself to a Eureka cluster (another registry).
+    fetch-registry: false # doesn't need to fetch registry from others. Do not try to fetch the list of registered services from another Eureka Server.
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 server:
